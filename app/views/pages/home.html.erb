@@ -1,7 +1,11 @@
+<!-- Restaurant Counter as set in Application Controller -->
 <div class="container">
-  <div class="d-flex justify-content-center mt-4">
+  <div data-controller="counter" class="d-flex justify-content-center mt-4">
     <div class="badge badge-primary p-3 mr-3">
-      <span><%= @restaurant_count %></span>
+      <!-- data-target allows us to find counter.count in our controller without manipulating the DOM as per the comment below -->
+
+      <span data-counter-target="count"><%= @restaurant_count %></span>
+      <!-- without Stimulus -> getElementById -> change innerHTML -->
     </div>
 
     <button class="btn btn-outline-dark">Refresh counter</button>
