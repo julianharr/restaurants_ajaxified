@@ -1,5 +1,7 @@
-<div class="container mt-5">
-<h1><%= @restaurant.name %> <small><%= @restaurant.address %></small></h1>
+<div class="container mt-5 mb-5 ">
+<h1><%= @restaurant.name %> <br>
+  <small><%= @restaurant.address %></small>
+</h1>
 <h2>
   <!-- If Retaurant = 0, pluralize makes it say, "0 Reviews", if 1, "1 Review" -->
   <%= pluralize @restaurant.reviews.size, "review" %>
@@ -10,7 +12,9 @@
     Be the first to leave a review for <%= @restaurant.name %>
   <% else %>
     <% @restaurant.reviews.each do |review| %>
-      <p><%= review.content %></p>
+    <!-- Target the individual ID of this review so we know where to 'reload'
+      the page using AJAX! -->
+      <p id="review-<%= review.id %>"><%= review.content %></p>
     <% end %>
   <% end %>
 </div>
@@ -21,3 +25,5 @@
   <%= f.button :submit, class:"btn btn-primary" %>
 <% end %>
 </div>
+
+<!-- ** remote: true ** says to Rails, "Don't reload the page, stay here." -->

@@ -11,7 +11,8 @@ class ReviewsController < ApplicationController
 
     # If Save, Redirect, else render restaurants/show
     if @review.save
-      redirect_to restaurant_path(@restaurant)
+      # Add Anchor to this so it stays in the same place using the review id!
+      redirect_to restaurant_path(@restaurant, anchor: "review-#{@review.id}")
     else
       # Form is on the show page so we just need render this page
       render 'restaurants/show'
