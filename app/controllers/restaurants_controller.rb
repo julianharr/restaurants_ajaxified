@@ -9,7 +9,6 @@ class RestaurantsController < ApplicationController
       format.json { render json: { restaurants: @restaurants } }
     end
 
-
   end
 
   def show
