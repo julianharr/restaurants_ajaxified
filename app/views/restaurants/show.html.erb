@@ -1,5 +1,6 @@
 <h1><%= @restaurant.name %> <small><%= @restaurant.address %></small></h1>
 <h2>
+  <!-- If Retaurant = 0, pluralize makes it say, "0 Reviews", if 1, "1 Review" -->
   <%= pluralize @restaurant.reviews.size, "review" %>
 </h2>
 
@@ -13,7 +14,7 @@
   <% end %>
 </div>
 
-<%= simple_form_for([ @restaurant, @review ]) do |f| %>
-  <%= f.input :content, as: :text %>
+<%= simple_form_for([ restaurant, review ], remote: true) do |f| %>
+  <%= f.input :content %>
   <%= f.button :submit %>
 <% end %>
