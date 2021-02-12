@@ -1,6 +1,15 @@
 class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
+
+    # When the request has been triggered, did you get HTML or JSON
+    respond_to do |format|
+      # Depending on the 'Accept' of requests... render HTML or handle JSON
+      format.html
+      format.json { render json: { restaurants: @restaurants } }
+    end
+
+
   end
 
   def show
