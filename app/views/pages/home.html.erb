@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- Restaurant Counter as set in Application Controller -->
+<div class="container">
+  <div data-controller="counter" class="d-flex justify-content-center mt-4">
+    <div class="badge badge-primary p-3 mr-3">
+      <!-- data-counter-target allows us to find counter.count in our controller without manipulating the DOM as per the comment below -->
+
+      <span data-counter-target="count"><%= @restaurant_count %></span>
+      <!-- without Stimulus -> getElementById -> change innerHTML -->
+    </div>
+
+    <!-- Syntax: event->controller-name#actionName -->
+    <!-- data-action defines what happens to data on an action... duh -->
+    <button class="btn btn-outline-dark" data-action="click->counter#refresh">Refresh counter</button>
+  </div>
+</div>
