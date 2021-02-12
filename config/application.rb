@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module RestaurantsAjaxified
   class Application < Rails::Application
+
+    # This is so your form works with JavaScript enabled or disabled
+    config.action_view.embed_authenticity_token_in_remote_forms = true
+
     config.generators do |generate|
       generate.assets false
       generate.helper false
