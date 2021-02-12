@@ -1,3 +1,4 @@
+<div class="container mt-5">
 <h1><%= @restaurant.name %> <small><%= @restaurant.address %></small></h1>
 <h2>
   <!-- If Retaurant = 0, pluralize makes it say, "0 Reviews", if 1, "1 Review" -->
@@ -14,7 +15,9 @@
   <% end %>
 </div>
 
-<%= simple_form_for([ restaurant, review ], remote: true) do |f| %>
+<!-- [ @restaurant, @review ] == form action="/restaurant/:id/reviews" -->
+<%= simple_form_for([ @restaurant, @review ], remote: true) do |f| %>
   <%= f.input :content %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class:"btn btn-primary" %>
 <% end %>
+</div>
